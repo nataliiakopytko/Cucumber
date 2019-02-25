@@ -1,6 +1,6 @@
 Feature: feature name
-  Scenario: Authenication
-    Given Open Application and Enter url
-    When enter username
-    And  enter password
-    Then verify Msg
+  Scenario: Looking up the translation of 'apple'
+    Given the user is on the google translate page
+    Given selected languages from english to ukrainian
+    When the user looks up the translation of the word "apple"
+    Then they should see the translation "яблуко"
