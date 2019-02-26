@@ -43,7 +43,7 @@ public class GoogleTranslatePage {
     public String getTranslatedWord() {
 
         WebDriverWait wait = new WebDriverWait(driver, 20);
-        WebElement waitForWord = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@title]")));
+        WebElement waitForWord = wait.until(ExpectedConditions.visibilityOfElementLocated(translatedWord));
         return waitForWord.getText();
     }
 
@@ -52,6 +52,8 @@ public class GoogleTranslatePage {
     }
 
     public String getDefinition() {
-        return driver.findElement(definition).getText();
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebElement waitForWord = wait.until(ExpectedConditions.visibilityOfElementLocated(definition));
+        return waitForWord.getText();
     }
 }

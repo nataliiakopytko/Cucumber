@@ -1,5 +1,6 @@
 package cucumber_stepdefs;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -33,6 +34,16 @@ public class MyStepdefs {
 
     @Then("^they should see the translation \"([^\"]*)\"$")
     public void theyShouldSeeTheTranslation(String translated) {
-        Assert.assertEquals(googleTranslatePage.getTranslatedWord(), translated);
+        assertEquals(googleTranslatePage.getTranslatedWord(), translated);
+    }
+
+    @Then("^the number of characters must be \"([^\"]*)\"$")
+    public void theNumberOfCharactersMustBe(int number) {
+        assertEquals(googleTranslatePage.getNumberOfCharacters(), number);
+    }
+
+    @Then("^they should see the definition \"([^\"]*)\"$")
+    public void theyShouldSeeTheDefinition(String definition) {
+        assertEquals(googleTranslatePage.getDefinition(), definition);
     }
 }
