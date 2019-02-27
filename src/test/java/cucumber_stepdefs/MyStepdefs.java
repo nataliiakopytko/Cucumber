@@ -1,18 +1,18 @@
 package cucumber_stepdefs;
 
-import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.testng.Assert;
 import pages.GooglePage;
 import pages.GoogleTranslatePage;
 
 import static org.testng.Assert.assertEquals;
 
 public class MyStepdefs {
-    GooglePage googlePage = new GooglePage();
-    GoogleTranslatePage googleTranslatePage = new GoogleTranslatePage();
+
+    private GooglePage googlePage = new GooglePage();
+    private GoogleTranslatePage googleTranslatePage = new GoogleTranslatePage();
 
     @Given("^the user is on the google translate page$")
     public void theUserIsOnTheGoogleTranslatePage() {
@@ -21,7 +21,7 @@ public class MyStepdefs {
         googlePage.getFirstLink().click();
     }
 
-    @Given("^selected languages from english to ukrainian$")
+    @And("^selected languages from english to ukrainian$")
     public void selectedLanguagesFromEnglishToUkrainian() {
         googleTranslatePage.selectEnglish();
         googleTranslatePage.selectUkrainian();
