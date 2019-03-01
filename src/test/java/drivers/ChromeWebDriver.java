@@ -1,5 +1,6 @@
 package drivers;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -7,13 +8,11 @@ public class ChromeWebDriver {
 
     public static WebDriver driver;
 
-    public ChromeWebDriver() {
-    }
-
     public static WebDriver getDriver() {
         if (driver == null) {
-            System.setProperty("webdriver.chrome.driver", "drivers\\chromedriver.exe");
+            WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
+            driver.manage().window().maximize();
         }
         return driver;
     }
@@ -24,5 +23,4 @@ public class ChromeWebDriver {
         }
         driver = null;
     }
-
 }

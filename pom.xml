@@ -93,6 +93,15 @@
             <version>2.11.2</version>
         </dependency>
 
+        <!--WebDriver Manager-->
+
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>3.3.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
