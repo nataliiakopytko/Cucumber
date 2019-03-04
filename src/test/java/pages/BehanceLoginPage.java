@@ -23,7 +23,7 @@ public class BehanceLoginPage {
 
     private final By signInButton = By.id("sign_in");
 
-    public void enterCredentials(String username, String password){
+    public void enterCredentials(String username, String password) {
         Waiter waiter = new Waiter();
         WebElement usernameField = waiter.waitForElement(usernameInput);
         usernameField.click();
@@ -39,7 +39,7 @@ public class BehanceLoginPage {
         log.info("Password is entered");
     }
 
-    public void signIn(){
+    public void signIn() {
         driver.findElement(checkBox).click();
         log.info("Checkbox is unchecked");
 
