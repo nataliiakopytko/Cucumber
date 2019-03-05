@@ -25,6 +25,8 @@ public class BehanceHomePage {
     private final String submenuElement = "//div[contains(@class, 'rf-tooltip--main')]" +
             "//a[contains(@class, 'rf-submenu__link ') and text() = '%s']";
 
+    private final By searchIcon = By.xpath("//a[contains(@class, 'qa-nav-search')]");
+
     private WebElement submenuElementSelect(String text) {
         return driver.findElement(By.xpath(String.format(submenuElement, text)));
     }
@@ -55,5 +57,9 @@ public class BehanceHomePage {
         log.info("Action move to element is performed");
         action.moveToElement(submenuElementSelect(element)).click().perform();
         log.info("Action select subElement is performed");
+    }
+
+    public void openSearchPage(){
+        driver.findElement(searchIcon).click();
     }
 }

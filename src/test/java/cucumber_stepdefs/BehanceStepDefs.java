@@ -5,12 +5,13 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import pages.BehanceHomePage;
 import pages.BehanceLoginPage;
 import pages.BehanceProfilePage;
-import lombok.Getter;
+import pages.BehanceSearchPage;
+
+import java.util.List;
 
 public class BehanceStepDefs {
 
@@ -53,5 +54,56 @@ public class BehanceStepDefs {
         Assert.assertTrue(profilePage.elementIsDisplayed());
     }
 
+    @When("^the user clicks on Add Banner Image Button and selects image$")
+    public void theUserClicksOnAddBannerImageButtonAndSelectsImage(List<String> image) {
+        for (String i : image) {
+            profilePage.addBanner(i);
+        }
+    }
 
+    @And("^the user clicks on Done button$")
+    public void theUserClicksOnDoneButton() {
+        profilePage.clickDoneButton();
+    }
+
+    @Then("^the picture is uploaded$")
+    public void thePictureIsUploaded() {
+        Assert.assertTrue(profilePage.checkPresenceOfUploadedPicture());
+    }
+
+    @When("^The user clicks on Search and Filter button$")
+    public void theUserClicksOnSearchAndFilterButton() {
+        homePage.openSearchPage();
+    }
+
+    @Then("^the user is on the search page$")
+    public void theUserIsOnTheSearchPage() {
+        BehanceSearchPage searchPage = new BehanceSearchPage();
+        Assert.assertTrue(searchPage.checkSearchInput());
+    }
+
+    @When("^The user clicks on the Additional Filters button$")
+    public void theUserClicksOnTheAdditionalFiltersButton() {
+        BehanceSearchPage searchPage = new BehanceSearchPage();
+        searchPage.selectAdditionalFilters();
+    }
+
+    @And("^the user clicks on Tools Used button$")
+    public void theUserClicksOnToolsUsedButton() {
+        BehanceSearchPage searchPage = new BehanceSearchPage();
+        searchPage.selectToolsUsed();
+    }
+
+    @And("^the user clicks on \"([^\"]*)\" button$")
+    public void theUserClicksOnButton(String tool)  {
+        BehanceSearchPage searchPage = new BehanceSearchPage();
+        searchPage.selectPopularTools(tool);
+
+    }
+
+    @Then("^a new filter \"([^\"]*)\" has appeared on filters menu$")
+    public void aNewFilterHasAppearedOnFiltersMenu(String tool) {
+        BehanceSearchPage searchPage = new BehanceSearchPage();
+        Assert.assertTrue(searchPage.checkFilterCrumbs(tool));
+    }
 }
